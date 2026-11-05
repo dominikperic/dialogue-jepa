@@ -1,0 +1,14 @@
+status: provisional
+purpose: controlled_pair_quality_degradation
+seed: 42
+pairing: controlled_mismatch_within_split_only
+pair_conditions: [intentionally_mismatched]
+mismatch_scope: within_split_only
+control_for: [speaker, conversation, transcript_overlap, duration]
+negative_sampling: to_preregister
+splits: [train, validation, test]
+fit_alignment_on: train
+select_on: validation
+evaluate_on: test
+metrics: [recall_at_1, recall_at_5, mean_reciprocal_rank, positive_pair_cosine, matched_vs_mismatched_retrieval]
+output_dir: experiments/bad_views

@@ -1,0 +1,20 @@
+status: provisional
+dataset: meld
+source: https://github.com/declare-lab/MELD
+modalities: [audio, text, video]
+annotations: [emotion, sentiment, speaker]
+availability: verify_assets_and_licenses_before_use
+paths:
+  raw: data/raw/meld
+  processed: data/processed/meld
+  manifest: data/manifests/meld.jsonl
+  splits: data/splits/meld.json
+splits:
+  unit: conversation
+  names: [train, validation, test]
+  disjoint: true
+  strategy: official_train_dev_test_after_overlap_audit
+  seed: 42
+  deduplicate_across_splits: true
+  verify_audio_transcript_pairing: true
+licensing: research_use_pending_source_media_review

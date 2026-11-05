@@ -1,0 +1,8 @@
+status: provisional
+tasks: [dialogue_state_tracking, next_dialogue_act, conversational_transition]
+architecture: to_select_after_baseline_studies
+input_modalities: [audio, text]
+primary_metrics: [task_accuracy, macro_f1]
+reproducibility_metrics: [latency_ms, throughput, memory_mb, training_compute]
+optimization_target: predictive_quality
+label_policy: use_only_verified_available_annotations

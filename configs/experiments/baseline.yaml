@@ -1,0 +1,13 @@
+status: provisional
+purpose: pretrained_encoder_and_conventional_fusion_baselines
+seed: 42
+datasets: [configs/data/spokenwoz.yaml, configs/data/meld.yaml]
+splits: [train, validation, test]
+baselines: [text_only, audio_only, pretrained_text, pretrained_audio, conventional_fusion]
+selection_priority: predictive_and_alignment_quality
+efficiency_role: reproducibility_only
+encoder_comparison: [strong_pretrained_backbones, architecture_families, scratch_controls]
+model_size_limit_for_inference: unrestricted
+generalization_evaluations: [unseen_conversations, unseen_speakers, cross_dataset_if_compatible]
+metrics: [recall_at_1, recall_at_5, mean_reciprocal_rank, task_accuracy, latency_ms, throughput, memory_mb]
+output_dir: experiments/baseline

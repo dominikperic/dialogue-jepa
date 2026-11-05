@@ -1,0 +1,20 @@
+status: provisional
+model: audio_jepa
+context_encoder:
+  backbone: strong_pretrained_audio_encoder_to_compare
+  selection_priority: representation_quality
+  size_constraint: none_for_inference_cost
+  embedding_dim: 768
+target_encoder:
+  initialization: context_encoder
+  update: exponential_moving_average
+  momentum: 0.996
+predictor:
+  hidden_dim: 1024
+  layers: 2
+predictive_objectives:
+  selection: validation_required
+  candidates: [cosine_prediction, variance_covariance_regularized_prediction, contrastive_future_prediction]
+  caution: test_collapse_and_false_negative_sensitivity
+sampling: to_validate_before_training
+collapse_prevention: to_validate_before_training

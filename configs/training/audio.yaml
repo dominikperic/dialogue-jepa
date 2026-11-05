@@ -1,0 +1,15 @@
+status: provisional
+model_config: configs/model/audio_jepa.yaml
+data_config: configs/data/spokenwoz.yaml
+seed: 42
+determinism: where_supported
+batch_size: 32
+learning_rate: 0.0001
+max_epochs: 30
+splits: [train, validation]
+checkpoint_dir: checkpoints/audio
+log_dir: experiments/audio
+validation_metric: held_out_prediction_and_noncollapse_diagnostics
+objective_config: configs/model/audio_jepa.yaml
+selection_priority: predictive_quality_not_inference_efficiency
+no_cross_modal_alignment: true

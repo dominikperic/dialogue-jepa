@@ -1,0 +1,13 @@
+status: provisional
+purpose: verified_aligned_audio_transcript_pairs
+seed: 42
+pairing: verified_same_utterance_same_conversation
+pair_conditions: [aligned_audio_transcript, weaker_positive]
+weaker_positive_definition: to_preregister_and_validate_without_cross_split_leakage
+control_for: [speaker, conversation, transcript_overlap, duration]
+splits: [train, validation, test]
+fit_alignment_on: train
+select_on: validation
+evaluate_on: test
+metrics: [recall_at_1, recall_at_5, mean_reciprocal_rank, positive_pair_cosine, matched_vs_mismatched_retrieval]
+output_dir: experiments/good_views
