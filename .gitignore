@@ -11,6 +11,12 @@ dist/
 .env
 .env.*
 !.env.example
+secrets/
+.secrets/
+credentials.json
+*.pem
+*.p12
+*.key
 .DS_Store
 .ipynb_checkpoints/
 *.log
@@ -46,3 +52,7 @@ lightning_logs/
 *.mp3
 *.mp4
 *.tar.gz
+*.tar
+*.zip
+*.parquet
+*.bin
