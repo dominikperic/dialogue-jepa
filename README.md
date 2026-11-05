@@ -1,2 +1,2 @@
-# duality-jepa
-Exploring the Platonic Representation Hypothesis using JEPA to learn shared latent representations of Counter-Strike 2 duels from opposing player perspectives.
+# dialogue-jepa
+Exploring the Platonic Representation Hypothesis using JEPA to learn shared latent representations of conversations from speech and text, enabling predictive dialogue-state modeling for AI voice agents.
