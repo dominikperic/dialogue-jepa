@@ -1,0 +1,20 @@
+status: provisional
+dataset: spokenwoz
+source: https://spokenwoz.github.io/
+modalities: [audio, text]
+annotations: [dialogue_state, transcript]
+availability: verify_assets_and_licenses_before_use
+paths:
+  raw: data/raw/spokenwoz
+  processed: data/processed/spokenwoz
+  manifest: data/manifests/spokenwoz.jsonl
+  splits: data/splits/spokenwoz.json
+splits:
+  unit: conversation
+  names: [train, validation, test]
+  disjoint: true
+  strategy: official_if_verified_else_conversation_disjoint
+  seed: 42
+  deduplicate_across_splits: true
+  verify_audio_transcript_pairing: true
+licensing: noncommercial_only_pending_review

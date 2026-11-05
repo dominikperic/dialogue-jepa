@@ -1,0 +1,12 @@
+status: provisional
+purpose: inspect_pair_quality_and_context_choices_without_leakage
+seed: 42
+factors: [pair_quality, context_window, training_data_fraction, alignment_pair_count, pretrained_backbone, architecture_family, predictive_objective]
+generalization_evaluations: [unseen_conversations, unseen_speakers, cross_dataset_if_compatible]
+efficiency_role: reproducibility_only
+splits: [train, validation, test]
+fit_alignment_on: train
+select_on: validation
+evaluate_on: test
+metrics: [recall_at_1, recall_at_5, mean_reciprocal_rank, task_accuracy, latency_ms]
+output_dir: experiments/ablation
