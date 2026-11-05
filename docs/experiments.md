@@ -4,7 +4,7 @@
 
 1. Resolve per-asset data rights and access; no automatic download or redistribution. Confirm dialogue/turn/audio/transcript IDs, audio availability, gold versus ASR transcript, label definitions, split counts and missingness from official releases.[1][3][4]
 2. Freeze dialogue-disjoint train, development, alignment-fit and untouched test protocol; document speaker/episode leakage risk and pre-register retrieval pool, downstream tasks, primary metric and uncertainty method.
-3. Establish trivial baselines and leakage tests; stop if pairs, permission, or split isolation cannot be established. **Status: not run.**
+3. Establish trivial baselines and leakage tests; stop if pairs, permission, or split isolation cannot be established. **Status: five-WAV/six-clip feasibility pilot only; no partitioned experiment or model run.** See the [good-views protocol](good_views_protocol.md) for the eligibility gate and separate training/alignment/prediction designs.
 
 ## Stage B — independent predictive learning
 

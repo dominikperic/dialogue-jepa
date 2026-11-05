@@ -1,6 +1,6 @@
 # dialogue-jepa
 
-**Status: initial research phase.** This repository documents a proposed test of whether independently trained speech and text predictive dialogue representations converge and whether their shared structure is useful for dialogue-state modeling. It contains no downloaded datasets, trained models, validated results, or production voice agent.
+**Status: data-feasibility pilot and research design; no model experiments.** This repository documents a proposed test of whether independently trained speech and text predictive dialogue representations converge and whether their shared structure is useful for dialogue-state modeling. Small official SpokenWOZ text/audio samples and a six-clip human-review manifest are stored locally under ignored `data/`; five clip transcripts passed review and one proper noun remains unresolved. There are no trained models, alignment results or production voice agent.
 
 ## 1. Project overview and research questions
 This project asks whether independently trained audio and text JEPAs can learn geometrically alignable conversation representations. Four questions guide it: (1) can the two independently learned spaces align; (2) how does the quality of paired observations ("good views" versus degraded or mismatched views) affect alignment; (3) can the representations predict future dialogue states or transitions; and (4) do they improve downstream prediction against strong unimodal and conventional multimodal baselines? These are open research questions. **Inference efficiency is not a primary optimization target**: record latency, memory and compute for reproducibility, without constraining model size to chase low inference cost. The Platonic Representation Hypothesis motivates the inquiry but does not establish that it holds for conversation.[9] Audio and text carry overlapping but nonidentical information; a shared component must not be assumed to recover modality-specific cues.
@@ -15,7 +15,7 @@ This project asks whether independently trained audio and text JEPAs can learn g
 Two separate JEPA-style pipelines predict latent representations of future conversational turns from preceding turns: one speech-only, one text-only. A stop-gradient/EMA target encoder and a context encoder/predictor are provisional design candidates, not proven collapse prevention for this setting.[8] No paired cross-modal objective, shared encoder, or shared learned parameters in the primary experiment. Fit orthogonal Procrustes **only after both models are frozen**, on a separate alignment split; evaluate on unseen pairs. See [architecture](docs/architecture.md) and [methodology](docs/methodology.md).
 
 ## 4. Research stages
-- **A — data/protocol:** confirm rights and audio/text pairing, inspect annotations, define dialogue-level splits, leakage checks, fixed metrics and controls. No dataset acquisition is part of this initial phase.
+- **A — data/protocol:** confirm rights and audio/text pairing, inspect annotations, define dialogue-level splits, leakage checks, fixed metrics and controls. A small, ignored SpokenWOZ feasibility sample and six human-reviewed clips are available; full split design and broad pairing validation remain future work.
 - **B — unimodal modeling:** independently train speech and text JEPA candidates, establish non-collapse and within-modality prediction/utility before alignment.
 - **C — frozen comparison:** fit Procrustes on training-only paired anchors; test held-out alignment, transfer, robustness, baselines and uncertainty. Stages B/C are future work, not completed. See [experiments](docs/experiments.md).
 
@@ -43,20 +43,21 @@ Repository-authored code and documentation are offered under [MIT](LICENSE). **M
 ## 12. Documentation map
 - [Architecture](docs/architecture.md) — pipelines and separation boundary.
 - [Methodology](docs/methodology.md) — hypotheses, metrics and safeguards.
+- [Good-views protocol](docs/good_views_protocol.md) — shared-information hypothesis, view controls and causally separated experiments.
 - [Experiments](docs/experiments.md) — staged protocol, baselines and decision gates.
 - [Datasets](docs/datasets.md) — source annotations, gaps and rights.
 - [Results](docs/results.md) — empty, explicitly unrun results register.
 
 ## 13. References and current status
-Research framing: Huh et al., *Position: The Platonic Representation Hypothesis*.[9] JEPA precedent: Assran et al., *Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture*.[8] Dataset primary sources are cited above and detailed in [datasets](docs/datasets.md). **Current state: initial research phase; no data acquired, experiments run, or results reported.**
+Research framing: Huh et al., *Position: The Platonic Representation Hypothesis*.[9] JEPA precedent: Assran et al., *Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture*.[8] Dataset primary sources are cited above and detailed in [datasets](docs/datasets.md). **Current state: small, ignored data-feasibility pilot completed; no model experiments or results reported.**
 
 ## Repository structure
 
 ```text
 configs/{data,model,training,experiments}/   # Provisional YAML protocols
 src/dialogue_jepa/{data,models,training,evaluation,utils}/  # Importable placeholders
-scripts/                                   # Nonfunctional future entry points
-data/{raw,processed,manifests,splits}/     # Empty, ignored data locations
+scripts/                                   # Inspection/validation utilities plus future entry points
+data/{raw,processed,manifests,splits}/     # Ignored local samples; no full-dataset download
 tests/                                     # Structural/import tests; model tests pending
 docs/                                      # Architecture, methodology, experiments, datasets, results
 demo/                                      # Not-implemented inference/demo placeholders

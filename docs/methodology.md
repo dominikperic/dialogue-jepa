@@ -1,4 +1,4 @@
-# Methodology (proposed; no data analyzed)
+# Methodology (proposed; data feasibility inspected, no model experiments)
 
 ## Falsifiable hypotheses
 
